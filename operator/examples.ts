@@ -27,13 +27,12 @@ const storeCode = async () => {
     ]
   });
 
-  console.log(" ---> txResponse: ", txResponse)
+  console.log(" ---> txResponse: ", txResponse);
 };
 
 const instantiate = async () => {
   const operator = new InjectiveOperator(process.env.INJ_PRIV ?? "", Network.TestnetSentry);
   const codeId = 8557;
-
 
   const msg = MsgInstantiateContract.fromJSON({
     sender: operator.primaryAccount.address,
@@ -55,7 +54,7 @@ const instantiate = async () => {
         cap: "100000000000000000000000"
       }
     }
-  })
+  });
 
   const txResponse = await operator.instantiate(msg, {
     gas: "5000000",
@@ -67,8 +66,8 @@ const instantiate = async () => {
     ]
   });
 
-  console.log(" ---> txResponse: ", txResponse)
-}
+  console.log(" ---> txResponse: ", txResponse);
+};
 
 const execute = async () => {
   const operator = new InjectiveOperator(process.env.INJ_PRIV ?? "", Network.TestnetSentry);
@@ -80,11 +79,11 @@ const execute = async () => {
     exec: {
       action: "mint",
       msg: {
-          amount: "10000000000000",
-          recipient: operator.primaryAccount.address
+        amount: "10000000000000",
+        recipient: operator.primaryAccount.address
       }
     }
-  })
+  });
 
   const txResponse = await operator.execute(msg, {
     gas: "5000000",
@@ -96,8 +95,8 @@ const execute = async () => {
     ]
   });
 
-  console.log(" ---> txResponse: ", txResponse)
-}
+  console.log(" ---> txResponse: ", txResponse);
+};
 
 const query = async () => {
   const operator = new InjectiveOperator(process.env.INJ_PRIV ?? "", Network.TestnetSentry);
@@ -107,11 +106,11 @@ const query = async () => {
     balance: {
       address: operator.primaryAccount.address
     }
-  }
+  };
 
   const response = await operator.query(contractAddress, msg);
 
-  console.log(" ---> response: ", response)
-}
+  console.log(" ---> response: ", response);
+};
 
 query();

@@ -1,54 +1,51 @@
 # First Step
 ## Install
 ```bash
-git clone https://github.com/keohanoi/custom-cw-tools &&
-cd custom-cw-tools &&
-npm install
+npm install injective-operator
 ```
 
 # Example
-Place your code directly in index.ts file and run the following command: 
-```bash
-ts-node index.ts
-```
 ## Injective Protocol
+### Store Code
 ```typescript
-import dotenv from "dotenv";
+import { InjectiveOperator, Network, MsgStoreCode } from "injective-operator";
 import fs from "fs";
-
-import { InjectiveOperator } from "./src/index";
-import { Network } from "../config/endpoints";
-import { MsgExecuteContract, MsgInstantiateContract, MsgStoreCode } from "@injectivelabs/sdk-ts";
-import { InstantiateMsg } from "./../constants/types/Cw20Base.types";
-
+import dotenv from "dotenv";
 dotenv.config({
   path: ".env"
-});
+})
 
 const storeCode = async () => {
-  const operator = new InjectiveOperator(process.env.INJ_PRIV ?? "", Network.TestnetSentry);
+  const operator = new InjectiveOperator(process.env.PRIVATE_KEY ?? "", Network.TestnetSentry);
   const code = fs.readFileSync("./artifacts/cw20_base.wasm");
   const msg = MsgStoreCode.fromJSON({
     sender: operator.primaryAccount.address,
     wasmBytes: code
   });
-  const txResponse = await operator.storeCode(msg, {
-    gas: "5000000",
-    amount: [
-      {
-        denom: "inj",
-        amount: "800000000000000"
-      }
-    ]
-  });
+  const txResponse = await operator.storeCode(
+    msg,
+    {
+      gas: "5000000",
+      amount: [
+        {
+          denom: "inj",
+          amount: "800000000000000"
+        }
+      ]
+    }
+  );
 
-  console.log(" ---> txResponse: ", txResponse)
+  console.log(" ---> txResponse: ", txResponse);
 };
 
+storeCode()
+```
+
+### Instantiate Contract
+```typescript
 const instantiate = async () => {
   const operator = new InjectiveOperator(process.env.INJ_PRIV ?? "", Network.TestnetSentry);
   const codeId = 8557;
-
 
   const msg = MsgInstantiateContract.fromJSON({
     sender: operator.primaryAccount.address,
@@ -70,7 +67,7 @@ const instantiate = async () => {
         cap: "100000000000000000000000"
       }
     }
-  })
+  });
 
   const txResponse = await operator.instantiate(msg, {
     gas: "5000000",
@@ -82,9 +79,12 @@ const instantiate = async () => {
     ]
   });
 
-  console.log(" ---> txResponse: ", txResponse)
-}
+  console.log(" ---> txResponse: ", txResponse);
+};
+```
 
+### Execute Contract
+```typescript
 const execute = async () => {
   const operator = new InjectiveOperator(process.env.INJ_PRIV ?? "", Network.TestnetSentry);
   const contractAddress = "inj13aklpywegw4n2nlnew8xc97lla4f3sqs5s8fh4";
@@ -95,11 +95,11 @@ const execute = async () => {
     exec: {
       action: "mint",
       msg: {
-          amount: "10000000000000",
-          recipient: operator.primaryAccount.address
+        amount: "10000000000000",
+        recipient: operator.primaryAccount.address
       }
     }
-  })
+  });
 
   const txResponse = await operator.execute(msg, {
     gas: "5000000",
@@ -111,9 +111,12 @@ const execute = async () => {
     ]
   });
 
-  console.log(" ---> txResponse: ", txResponse)
-}
+  console.log(" ---> txResponse: ", txResponse);
+};
+```
 
+### Query Contract
+```typescript
 const query = async () => {
   const operator = new InjectiveOperator(process.env.INJ_PRIV ?? "", Network.TestnetSentry);
   const contractAddress = "inj13aklpywegw4n2nlnew8xc97lla4f3sqs5s8fh4";
@@ -122,12 +125,12 @@ const query = async () => {
     balance: {
       address: operator.primaryAccount.address
     }
-  }
+  };
 
   const response = await operator.query(contractAddress, msg);
 
-  console.log(" ---> response: ", response)
-}
+  console.log(" ---> response: ", response);
+};
 
 query();
 ```
