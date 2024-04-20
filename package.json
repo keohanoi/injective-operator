@@ -1,6 +1,6 @@
 {
   "name": "injective-operator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Injective Operator",
   "main": "index.ts",
   "keywords": [

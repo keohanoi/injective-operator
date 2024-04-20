@@ -5,6 +5,7 @@ npm install injective-operator
 ```
 
 # Example
+These examples are using for an CW20 contract whose msg is defined here: [CW20 Msg](https://github.com/CosmWasm/cw-plus/blob/main/contracts/cw20-base/src/msg.rs)
 ## Injective Protocol
 ### Store Code
 ```typescript
@@ -44,7 +45,7 @@ storeCode()
 ### Instantiate Contract
 ```typescript
 const instantiate = async () => {
-  const operator = new InjectiveOperator(process.env.INJ_PRIV ?? "", Network.TestnetSentry);
+  const operator = new InjectiveOperator(process.env.PRIVATE_KEY ?? "", Network.TestnetSentry);
   const codeId = 8557;
 
   const msg = MsgInstantiateContract.fromJSON({
@@ -52,7 +53,7 @@ const instantiate = async () => {
     admin: operator.primaryAccount.address,
     codeId,
     label: "cw20_base",
-    msg: <InstantiateMsg>{
+    msg: {
       name: "CW20 Base",
       symbol: "CWWW",
       initial_balances: [
@@ -86,7 +87,7 @@ const instantiate = async () => {
 ### Execute Contract
 ```typescript
 const execute = async () => {
-  const operator = new InjectiveOperator(process.env.INJ_PRIV ?? "", Network.TestnetSentry);
+  const operator = new InjectiveOperator(process.env.PRIVATE_KEY ?? "", Network.TestnetSentry);
   const contractAddress = "inj13aklpywegw4n2nlnew8xc97lla4f3sqs5s8fh4";
 
   const msg = MsgExecuteContract.fromJSON({
@@ -118,7 +119,7 @@ const execute = async () => {
 ### Query Contract
 ```typescript
 const query = async () => {
-  const operator = new InjectiveOperator(process.env.INJ_PRIV ?? "", Network.TestnetSentry);
+  const operator = new InjectiveOperator(process.env.PRIVATE_KEY ?? "", Network.TestnetSentry);
   const contractAddress = "inj13aklpywegw4n2nlnew8xc97lla4f3sqs5s8fh4";
 
   const msg = {
