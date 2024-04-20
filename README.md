@@ -1,12 +1,13 @@
-# First Step
-## Install
+# Installation
 ```bash
 npm install @keohanoi/injective-operator@latest
 ```
-
+```bash
+cp ./.npmrc.example .npmrc
+```
+Open `.npmrc` file and replace `<YOUR_GITHUB_TOKEN>` with your own github token.
 # Example
 These examples are using for an CW20 contract whose msg is defined here: [CW20 Msg](https://github.com/CosmWasm/cw-plus/blob/main/contracts/cw20-base/src/msg.rs)
-## Injective Protocol
 ### Store Code
 ```typescript
 import { InjectiveOperator, Network, MsgStoreCode } from "@keohanoi/injective-operator";

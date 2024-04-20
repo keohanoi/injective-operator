@@ -1,6 +1,6 @@
 {
   "name": "@keohanoi/injective-operator",
-  "version": "1.0.13",
+  "version": "1.1.0",
   "description": "Injective Operator",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
