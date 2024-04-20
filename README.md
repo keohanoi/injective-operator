@@ -1,7 +1,7 @@
 # First Step
 ## Install
 ```bash
-npm install injective-operator
+npm install @keohanoi/injective-operator@latest
 ```
 
 # Example
