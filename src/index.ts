@@ -7,9 +7,9 @@ import {
   TxGrpcApi
 } from "@injectivelabs/sdk-ts";
 import { StdFee } from "@cosmjs/amino";
-import { getNetworkEndpoints, Network, NetworkEndpoints } from "../../config/endpoints";
+import { getNetworkEndpoints, Network, NetworkEndpoints } from "./config/endpoints";
 import { CosmWasmClient } from "@cosmjs/cosmwasm-stargate";
-import { MsgExecuteContract, MsgInstantiateContract, MsgStoreCode } from "../msgs/msgs";
+import { MsgExecuteContract, MsgInstantiateContract, MsgStoreCode } from "./msgs/msgs";
 
 export class InjectiveOperator {
   private privateKey: PrivateKey;
@@ -96,3 +96,6 @@ export class InjectiveOperator {
     return client.queryContractSmart(contractAddress, msg);
   }
 }
+
+export * from "./config/endpoints"
+export * from "./msgs/msgs"
