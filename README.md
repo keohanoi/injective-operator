@@ -9,7 +9,7 @@ These examples are using for an CW20 contract whose msg is defined here: [CW20 M
 ## Injective Protocol
 ### Store Code
 ```typescript
-import { InjectiveOperator, Network, MsgStoreCode } from "injective-operator";
+import { InjectiveOperator, Network, MsgStoreCode } from "@keohanoi/injective-operator";
 import fs from "fs";
 import dotenv from "dotenv";
 dotenv.config({

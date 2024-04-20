@@ -1,6 +1,6 @@
 {
-  "name": "injective-operator",
-  "version": "1.0.4",
+  "name": "@keohanoi/injective-operator",
+  "version": "1.0.6",
   "description": "Injective Operator",
   "main": "index.ts",
   "keywords": [
