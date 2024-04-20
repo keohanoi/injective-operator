@@ -1,6 +1,6 @@
 {
   "name": "@keohanoi/injective-operator",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Injective Operator",
   "main": "index.ts",
   "keywords": [
@@ -22,7 +22,9 @@
   "dependencies": {
     "@injectivelabs/sdk-ts": "^1.14.7",
     "@cosmjs/cosmwasm-stargate": "^0.32.3",
-    "@cosmjs/proto-signing": "^0.32.3",
+    "@cosmjs/proto-signing": "^0.32.3"
+  },
+  "devDependencies": {
     "dotenv": "^16.4.5"
   }
 }
