@@ -1,0 +1,24 @@
+{
+  "name": "injective-operator",
+  "version": "1.0.1",
+  "description": "Injective Operator",
+  "main": "index.ts",
+  "keywords": [
+    "injective",
+    "operator",
+    "cosmos",
+    "cosmwasm",
+    "cosmjs"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Khang Nguyen Truong",
+    "email": "nguyentruongkhang22@gmail.com"
+  },
+  "dependencies": {
+    "@injectivelabs/sdk-ts": "^1.14.7",
+    "@cosmjs/cosmwasm-stargate": "^0.32.3",
+    "@cosmjs/proto-signing": "^0.32.3",
+    "dotenv": "^16.4.5"
+  }
+}
