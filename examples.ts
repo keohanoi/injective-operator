@@ -1,10 +1,10 @@
 import dotenv from "dotenv";
 import fs from "fs";
 
-import { InjectiveOperator } from "./src/index";
-import { Network } from "../config/endpoints";
+import { InjectiveOperator } from "./operator/src/index";
+import { Network } from "./config/endpoints";
 import { MsgExecuteContract, MsgInstantiateContract, MsgStoreCode } from "@injectivelabs/sdk-ts";
-import { InstantiateMsg } from "./../constants/types/Cw20Base.types";
+import { InstantiateMsg } from "./constants/types/Cw20Base.types";
 
 dotenv.config({
   path: ".env"
