@@ -3,7 +3,9 @@ import {
   MsgInstantiateContract as _MsgInstantiateContract,
   MsgMigrateContract as _MsgMigrateContract,
   MsgUpdateAdmin as _MsgUpdateAdmin,
-  MsgStoreCode as _MsgStoreCode
+  MsgStoreCode as _MsgStoreCode,
+  MsgPrivilegedExecuteContract as _MsgPrivilegedExecuteContract,
+  MsgExecuteContractCompat as _MsgExecuteContractCompat, 
 } from "@injectivelabs/sdk-ts";
 
 export class MsgStoreCode extends _MsgStoreCode {}

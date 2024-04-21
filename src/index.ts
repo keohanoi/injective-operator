@@ -3,13 +3,15 @@ import {
   ChainGrpcAuthApi,
   ChainGrpcTendermintApi,
   createTransaction,
+  MsgExecuteContractCompat,
+  MsgPrivilegedExecuteContract,
   PrivateKey,
   TxGrpcApi
 } from "@injectivelabs/sdk-ts";
 import { StdFee } from "@cosmjs/amino";
 import { getNetworkEndpoints, Network, NetworkEndpoints } from "./config/endpoints";
 import { CosmWasmClient } from "@cosmjs/cosmwasm-stargate";
-import { MsgExecuteContract, MsgInstantiateContract, MsgStoreCode } from "./msgs/msgs";
+import { MsgExecuteContract, MsgInstantiateContract, MsgMigrateContract, MsgStoreCode, MsgUpdateAdmin } from "./msgs/msgs";
 
 export class InjectiveOperator {
   private privateKey: PrivateKey;
@@ -70,7 +72,7 @@ export class InjectiveOperator {
     return this.api.broadcast(txRaw);
   }
 
-  async execute(msg: MsgExecuteContract, fee: StdFee) {
+  async execute(msg: MsgExecuteContract | MsgMigrateContract | MsgUpdateAdmin | MsgExecuteContractCompat | MsgPrivilegedExecuteContract, fee: StdFee) {
     const [latestBlock, accountDetail] = await Promise.all([
       this.tenderminApi.fetchLatestBlock(),
       this.authApi.fetchAccount(this.primaryAccount.address)
