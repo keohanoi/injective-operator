@@ -4,10 +4,10 @@ echo "//npm.pkg.github.com/:_authToken=<YOUR_GITHUB_TOKEN>
 @keohanoi:registry=https://npm.pkg.github.com" | 
 cat >> .npmrc
 ```
+Open `.npmrc` file and replace `<YOUR_GITHUB_TOKEN>` with your own github token.
 ```bash
 npm install @keohanoi/injective-operator@latest
 ```
-Open `.npmrc` file and replace `<YOUR_GITHUB_TOKEN>` with your own github token.
 # Example
 These examples are using for an CW20 contract whose msg is defined here: [CW20 Msg](https://github.com/CosmWasm/cw-plus/blob/main/contracts/cw20-base/src/msg.rs)
 ### Store Code
