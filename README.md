@@ -3,7 +3,9 @@
 npm install @keohanoi/injective-operator@latest
 ```
 ```bash
-cp ./.npmrc.example .npmrc
+echo "//npm.pkg.github.com/:_authToken=<YOUR_GITHUB_TOKEN>
+@keohanoi:registry=https://npm.pkg.github.com" | 
+cat >> .npmrc
 ```
 Open `.npmrc` file and replace `<YOUR_GITHUB_TOKEN>` with your own github token.
 # Example
